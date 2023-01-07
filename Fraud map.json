@@ -35,9 +35,9 @@
   "encoding": {
     "color": {
       "field": "fraud losses",
-      "legend": {"title": null, "orient": "right", "direction": "vertical"},
+      "legend": {"title": "losses from financial fraud ($)", "orient": "bottom", "direction": "hoizontal"},
       "type": "quantitative",
-      "scale": {"scheme": "spectral", "reverse": false}
+      "scale": {"scheme": "blues", "reverse": false}
     },
     "tooltip": [
       {"field": "properties.NAME", "title": "State"},
