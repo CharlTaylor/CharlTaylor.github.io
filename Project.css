@@ -1,0 +1,213 @@
+/* Richard Davies, Data Science for Economists */
+
+/* This is my first proper css file */
+
+
+/* Import a font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+/* Set the background color for my page: */
+body{
+    background-color: rgb(220, 220, 220);
+}
+
+
+ 
+
+
+/* Choose the appearance of the tags, h1, h3 and p: */
+h1, h2, h3, p{
+    color:rgb(36, 25, 100);
+    font-family: 'Times New Roman ', sans-serif;
+    text-align: center;
+}
+
+
+
+/*Choosing the design of the website/ the layout and format in which my project will be presented*/    
+.myWeek1{
+    margin: auto;
+    width: 700px;
+    background-color: rgb(220, 220, 220);
+
+      
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(220,220,220);
+}
+
+
+/* Set the apperance of the class, chart */
+.Chart1{
+    background-color: white;
+    width:700px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(184, 184, 184);
+    position: center;
+}
+
+.Chart2{
+    background-color: white;
+    width:500px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(184, 184, 184);
+    position: center;
+    margin-left: 100px;
+}
+
+.Chart3{
+    background-color: white;
+    width:500px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(184, 184, 184);
+    margin-left: 100px;
+}
+
+.Chart4{
+    background-color: white;
+    width:500px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(184, 184, 184);
+    margin-left: 100px;
+}
+
+.Chart5{
+    background-color: white;
+    width:500px;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(184, 184, 184);
+    margin-left: 100px;
+}
+/*inspired by Christina Pham (2021) */
+/*designing the navigation bar*/
+.navigation {
+    position: fixed;
+    margin-left: -50px;
+    margin-top: -10px;
+    padding: 0;
+    width: 100px;
+    height: 100%;
+    background: #525252 no-repeat center fixed;
+    transition: 0.5s;
+    overflow: hidden;
+    color: #eeeeee;
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .navigation:hover,
+  .navigation.active {
+    width: 250px;
+  }
+  
+  .navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+  }
+  
+  .navigation ul li:hover {
+    background: #555;
+    transition: 0.5s ease;
+    color: #555
+  }
+  
+  .navigation ul li a {
+    position: relative;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #3d3c3c;
+  }
+  
+  .navigation ul li a:hover {
+    color: white;
+  }
+  
+  .navigation li a.active {
+      background-color: #7a7a7a;
+      color: white;
+      font-weight: 900;
+  }
+  
+  .navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+  }
+  
+  .navigation ul li a .icon .fa {
+    font-size: 24px;
+  }
+  
+  .navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+  }
+/*inspired by the rapid charts website*/
+/*Designing the buttons that link my charts to the code*/
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+  .codeButton {
+    background-color: transparent;
+    border: 1px solid #525252 ;
+    color: #525252 ;
+    font-family: 'Roboto', sans-serif;
+    line-height: 16px;
+    font-weight: 600;
+    border-radius: 150px;
+    box-sizing: content-box;
+    align-items: flex-start;
+    display: inline-block;
+    font-size: 12px;
+    margin: 1px 2px 1px 2px;
+    text-decoration: none;
+    max-width: 100px;
+    outline-offset: 2px;
+    overflow: hidden;
+    padding: 5px 12px;
+    text-align: left;
+    text-overflow: ellipsis;
+    transition: border-color,background-color .5s ease;
+    white-space: nowrap;
+  }
+  
+
+
+  
+
+
+
+
+
+

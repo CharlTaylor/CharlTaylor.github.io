@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+
+<head>
+
+    <!-- HEAD START-->
+
+    <!--Linking my project HTML fill to the corresponding css-->
+<link rel="stylesheet" href="project.css">
+
+<!--Loading the icons onto the navbar-->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  
+  
+<!--The next three lines allow the Vega embed-->
+<script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+
+
+</head>
+
+<!--HEAD END-->
+
+<body>
+
+<!--BODY START-->
+
+</div>
+
+ 
+<!--inspired by Christina Pham (2021)--> 
+    <!--Navigation bar and title-->
+  <div class="navigation">
+    <ul style= "padding-top: 0px;margin-top: 0px;">
+      <li>
+        <a href="Home.html">
+          <span class="icon"><i class="fa fa-home"></i></span>
+          <span class="title">Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="index.html">
+          <span class="icon"><i class="fa fa-code"></i></span>
+          <span class="title">Portfolio</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="active" href="project.html">
+          <span class="icon"><i class="fa fa-book"></i></span>
+          <span class="title">Project</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://rapidcharts.io/datascience">
+          <span class="icon"><i class="fa fa-graduation-cap"></i></span>
+          <span class="title">Course</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/CharlTaylor/CharlTaylor.github.io">
+          <span class="icon"><i class="fa fa-github"></i></span>
+          <span class="title">Github</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+<div style="margin-left:150px;margin-right:5%;padding:2px 15px;height:1000px;">
+
+<!-- A div that contains a group of items for week 1. Can be useful for setting background colours etc.  -->
+<!--decided that the website looks far more clean if all charts/anaylsis comes under the same group (Week1)-->
+<div class="myWeek1">
+
+    <!--title-->
+    <h1>Can we trust Chinese statistics?</h1>
+    <h2>Chinese statistics have long been accused of manipulation and exaggeration. Do these allegations hold merit or do they represent how the west look upon the Chinese economy with a jaundiced eye?  </h2>
+    
+    <!--introduction-->
+    <h3>Aims for this project</h3>
+
+    <!---->
+    
+    <p>Since economic reforms in the 1980s, China has undergone rapid economic expansion, acheiving GDP growth in double figures. 
+        There is a heavy notion that this can be accounted for by some very authoritarian policies implimented by the ruling party, suffocating the freedoms of its citizens. 
+        In the past, the Chinese goverment have been able to justify this as a consequence of rapid growth in livlihoods not seen in any democratic economy across the globe. 
+        Officals flaunt figures such as the pulling of 800 million people out of poverty. 
+        However, as growth figures have started to slow, this trade off seems less attractive, leading to some political tensions. 
+        And here is the incentive for chinese offcials to manipulate figures. 
+        We will evaluate this extent to which Chinese statistics can be trusted. </p>
+
+      <!--Chart 1-->  
+    
+    <h3></h3>
+        <div class="Chart1" id="Chart1">
+        <script>
+            var myChart1 = "Chart improved1.json";
+            vegaEmbed('#Chart1', myChart1);
+        </script>
+    
+    <!--Button linking visualisations to data, Code etc. inspired by the rapid charts website (same for succeeding charts)-->
+    </div>
+        <div class="container">
+            <a class="codeButton" href="https://colab.research.google.com/drive/1lJEu4UEeYKpb5ncgoBZZjZlXDc3TAVW-">Map disection</a>
+            <a class="codeButton"
+                href="https://colab.research.google.com/drive/1h-y1rFZQYqXoe5Pn_Ep4PIR9xSVsSY6J">Colab</a>
+            <a class="codeButton"
+                href="https://ourworldindata.org/grapher/statistical-capacity-indicator">Data</a>
+            <a class="codeButton"
+                href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/SCS_clean.json">Code</a>
+        </div>
+    
+    <!--Analysis of the above chart, including what the reader is looking at and what the inference of this is (same for succeeding charts) -->
+    <p> 
+        This chart portrays a world map, colour coded by each countries statistical cacpacity score between 2006 and 2020. Cleaning data scraped from our world in data using python on google colab.
+        We find that China scored in the bottom 38 percentile for low and median income countries in 2004 and the 52nd percentile in 2015. Which is poor considering how hard it may be for low and middle income countries to produce high quality economic data.
+    </p>
+
+
+    <!--Chart 2-->
+
+<div>
+    <div class="Chart2" id="Chart2"></div>
+</div>
+<script>
+    var myChart2 = "PHR.json";
+    vegaEmbed('#Chart2', myChart2);
+</script>
+<div class="container">
+    <a class="codeButton" href="https://data.worldbank.org/indicator/SI.POV.DDAY?locations=CN">Source</a>
+    <a class="codeButton"
+        href="https://colab.research.google.com/drive/1cfqkFzWOndX6aCeWeV7nM_vHJYYtrALt">Colab</a>
+    <a class="codeButton"
+        href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/Poverty%20Clean.csv">Data</a>
+    <a class="codeButton"
+        href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/Working%20graph.json">Code</a>
+</div>
+
+<p>
+The aforementioned flagship statistic that China has pulled 800 million people out of poverty is particularly impressive.
+I decided to test how this has been reported overtime between a recognised agency, namely the world bank, and figures published by the Chinese bureau of Statistics.
+By scraping data from the Chinese statistical yearbook, and cleaning data issued by the world bank using Colab, I was able to combine datasets, creating this visualisation. 
+We see huge differences between figures published by the two bodies that decreses overtime.  
+</p>
+
+
+<!--Chart 3-->
+
+<div>
+    <div class="Chart3" id="Chart3"></div>
+</div>
+<script>
+    var myChart3 = "Chinese GDP faliure.json";
+    vegaEmbed('#Chart3', myChart3);
+</script>
+<div class="container">
+    <a class="codeButton" href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/GDP%20discrepencies%20clean.csv">data</a>
+    <a class="codeButton" 
+    href="http://www.stats.gov.cn/tjsj/ndsj/2019/indexeh.htm">Source1</a>
+    <a class="codeButton"
+        href="https://www.statista.com/statistics/263770/gross-domestic-product-gdp-of-china/">source2</a>
+    <a class="codeButton"
+        href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=CN">source3</a>
+    <a class="codeButton"
+    href="https://colab.research.google.com/drive/1CHWltYccxNhNR_jeilUwNt__QTtWkzCB">Colab</a>
+    <a class="codeButton" 
+        href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/Chinese%20GDP%20faliure.json">Code</a>
+</div>
+<p>
+A highly questioned measure has always been Chinese GDP figures. 
+Chinese governing bodies have previously come out and said that figures may be inaccurate without providing any real explaination about how or why.
+This chart looks at the extent to which GDP has been overstated, comparing year-on-year growth figures published by the Chinese Bureau of statistics to those published by recognised agencies.
+I used colab to clean the data ensuring that all measurements are consistent, and then combined them using excel.
+Clearly, we can see this pattern of overstating the good periods and understating the bad ones especially when compared to the world bank.
+</p>
+
+
+<!--Chart 4-->
+
+<div>
+    <div class="Chart4" id="Chart4"></div>
+</div>
+<script>
+    var myChart4 = "NEW cases graph4.json";
+    vegaEmbed('#Chart4', myChart4);
+
+</script>
+<div class="container">
+    <a class="codeButton" href="http://en.nhc.gov.cn/">Source</a>
+    <a class="codeButton"
+        href="https://colab.research.google.com/drive/1EXDyYEohRS9ZZIacB3GNsSud1DaPavqt">Colab</a>
+    <a class="codeButton"
+        href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/Chinas%20New%20covid%20cases.csv">Data</a>
+    <a class="codeButton"
+        href="https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/Compiled_vega_clean.json">Code</a>
+</div>
+<p>
+    Covid-19 provided another oppotunity for China to emphasise its authority, manipulating figures to achieve political outcomes.
+    Figure 4 shows how reporting guidlines in Hubei were issued on the 6th of Feburary 2020, causing a spike in new cases. This spike happened to come just prior to the provincial elections where the Hubei incumbent had fallen out of favour with the ruling party.
+    Less than a week later the Guidlines where rescended and new cases retraced back to almost zero. This data was obtained from the National commission of Health and cleaned using Colab. 
+
+</p>
+<!--Chart 5-->
+<h3>
+    
+</h3>
+<div>
+    <div class="Chart5" id="Chart5">
+        <script>
+            var myChart5 = "pushing_on.json";
+            vegaEmbed('#Chart5', myChart5);
+        </script>
+        
+    </div>
+    <div class="container"> 
+        <a class="codeButton" href="http://www.stats.gov.cn/english/Statisticaldata/AnnualData/">Source</a>
+        <a class="codeButton"
+            href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/number%20of%20indicators.csv">Data</a>
+        <a class="codeButton"
+            href="https://github.com/CharlTaylor/CharlTaylor.github.io/blob/main/Number%20of%20indicator%20improved.json">Code</a>
+    </div>
+    <p>
+        Lastly, I manually counted the number of indicators made available by the Chinese statistical bureau in the Chinese statistical yearbook.
+        I did this by scraping the appendix into excel, letting the number of rows count the number of indicators.
+        To this end, things have regressed since President Xi took charge in 2013, with the lowest number of indicators made available in 2019.
+        This emphasises a deterioration in transparency - a lack of scrutiny on figures claimed to have been achieved. 
+    </p>
+</div>
+
+
+
+<!--Section number 3: Explaining the difficulties I had comprising my project, and how I overcame these hurdles.-->
+<h2>
+    Challenges I faced
+</h2>
+<p>
+    I elected not to use APIs in my project.
+    The APIs I found relating to China were published by independent bodies, such as stock price values of Chinese companies.
+    I decided it was more important to focus on figures published by China themsleves.
+<p>
+    <div>
+
+    </div>
+<p>
+    In creating figure 1, I found that alot of countries arent included in the index as their high degree of transparency, due to independent collation bodies, renders the statistic untenable.
+    So, to prevent a world map that missed out many countries I disected the JSON map and manually inputted the missing countries.
+    In order to not misslead the reader into thinking developed countries scored 0, I included a tooltip which stated whether data was available or not.  
+</p>
+     
+<div>
+
+</div>
+<p>
+    Cleaning data was fairly frictionless, however there were instances where the way I wanted to visualise my data proved cumbersome.
+    Alot of Chinese data is hard to find, it took me a while to find data that worked with my ideas - even posing as a journalist for major tabloids, sending emails to official Chinese agencies requesting data for my "article".
+</p>
+    
+    <div>
+
+
+        <!--conclusion-->
+        <h2>
+            Conclusion
+        </h2>
+        
+        
+        <p>
+            Statistics that come out of China should still be treated sceptically.
+            Although we see signs of improvemnent in accuracy, transaparency in measures is still ambiguous.
+            Potentially more worryingly, we still see examples of manipulation to achieve political aims.
+            Economists should take this into account whenever analysising figures published by China.
+            Failure to do so could lead to skewed conclusions, overstating the true colours of the worlds second largest economy.
+        </p>
+    </div>  
+
+
+<!--BODY END-->
+
+
+</html>
+
+

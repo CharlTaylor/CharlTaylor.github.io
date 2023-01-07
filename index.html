@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--HEAD START-->
+<head>
+    
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    
+
+    <!-- Link to my style sheet -->
+    <link rel="stylesheet" href="index.css">
+
+
+    <!--The next three lines allow the Vega embed-->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+</head>
+
+<!--HEAD END-->
+
+<!--BODY START-->
+
+<body>
+</div>
+<!-- A div that contains a group of items for week 1. Can be useful for setting background colours etc.  -->
+
+    <!--Navigation bar and title inspired by Christina Pham (2021)-->
+  <div class="navigation">
+    <ul style= "padding-top: 0px;margin-top: 0px;">
+      <li>
+        <a href="Home.html">
+          <span class="icon"><i class="fa fa-home"></i></span>
+          <span class="title">Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="active" href="project">
+          <span class="icon"><i class="fa fa-code"></i></span>
+          <span class="title">Portfolio</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="project.html"> 
+          <span class="icon"><i class="fa fa-book"></i></span>
+          <span class="title">Project</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://rapidcharts.io/datascience">
+          <span class="icon"><i class="fa fa-graduation-cap"></i></span>
+          <span class="title">Course</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/CharlTaylor">
+          <span class="icon"><i class="fa fa-github"></i></span>
+          <span class="title">Github</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+<div style="margin-left:150px;margin-right:5%;padding:2px 15px;height:1000px;">
+
+ 
+    <!-- A div that contains a group of items for week 1. Can be useful for setting background colours etc.  -->
+    <div class="myWeek1">
+        <h1>Portfolio of assingments</h1>
+
+<!--week 2-->        
+        <h2>Homework 1</h2>
+        <h3>Setting up web page, and embedding two charts</h3>
+        <p>The first chart tracks Covid-19 cases by UK region.</p>
+        <div class="Chart1" id="Chart1"></div>
+
+        <p>My second chart looks at productivity in the UK</p>
+        <div class="Chart2" id="Chart2"> </div>
+        
+
+    </div> 
+    <!--week 3-->
+    <div class="myWeek1">
+        <h2>Homework 2</h2>
+        <h3>Two charts: replicating one from the Financial Times, and your first original</h3>
+        <p>Replicating a graph from the <a href="https://www.ft.com/content/eddedee3-669d-42cc-9597-33609a8bff99">ft</a> improving it and uploading an original graph using an API</p>
+        <div class="Chart3" id="Chart3"> </div>
+        <div class="Chart17" id="Chart17"> </div>
+        <div class: url"https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd6c748xw2pzm8.cloudfront.net%2Fprod%2F734b3eb0-3cbd-11ed-9c81-f9797f15890e-standard.png?dpr=1&fit=scale-down&quality=highest&source=next&width=700" ></div>
+        <p>If greater credit outstanding is a result of investors looking for riskier rewards then 2022 would be the riskiest year plotted.</p>
+
+    </div>
+<!--week 4-->
+    <div class="myWeek1">
+        <h2>Homework 3</h2>
+        <h3>Two charts: inline data objects and visual encodings</h3>
+        <p>I used <a href="https://colab.research.google.com/drive/1Og9qHrCit2rZ5K_OvWdPg192x5_d836y#scrollTo=pDc9_mgE1Qyb">python</a>  data conversion pipelines to clean data on unemployment rates in advanced economies over time. </p>
+        <div class="Chart15" id="Chart15"> </div>
+        <div class="Chart19" id="Chart19"> </div>
+        <p>Restricting the chart to a smaller time frame allows us to see recent trends more clearly.</p>
+
+    </div>
+<!--week 5-->
+    <div class="myWeek1">
+        <h2>Homework 4</h2>
+        <h3>One Chart: Implement a data scraper of your own. Any source, any data.</h3>
+        <p>This week we were asked to scrape data from website of our choice and comprise some data visualisation. I chose to plot the FPL cost of player against the points they scored over the course of the 21/22 season. This should be a good indication as to whether player under or over performed during the course of the year. Players closer to the upper left corner would have bee seen as good value whereas those to the bottom right could be considered as over valued.</p>
+        <div class="Chart13" id="Chart13"> </div>
+      
+      
+    </div>
+
+
+     <!--week 6-->
+    <div class="myWeek1">
+        <h2>Homework 5</h2>
+        <h3> Nine Charts: build  a dashboard</h3>
+        <p> Using python to create loops, enabling multiple datasets to be downloaded at once. I chose to create multiple charts showing the CPI (consumer price index) of a variety of goods and services within the economy. My Python code can be found <a href="https://colab.research.google.com/drive/1ts6r4U-FFjEckeqw9ruW026TS9Q0FqPd#scrollTo=WvllOANYg2eH">here.</a></p>
+        <div class="grid-container" style = "display: grid;">
+            <div class="grid-item"><div class = dashchart id = "Chart4" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart5" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart6" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart7" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart8" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart9" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart10" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart11" style = "display: block;"></div></div>
+            <div class="grid-item"><div class = dashchart id = "Chart12" style = "display: block;"></div></div>
+    
+</div>
+<!--week 7-->
+    <div class="myWeek1">
+        <h2>Homework 6</h2>
+        <h3>Two maps: a base map and a choropleth</h3>
+        <p>This chlorapleth map shows the financial losses accrued from fraud complaints logged with the federal trade commission in the US, by state. </p>
+        <div class="Chart18" id="Chart18"> </div>
+        <div class="Chart14" id="Chart14"> </div>
+      
+    </div>
+<!--week 8-->
+    <div class="myWeek1">
+        <h2>Homework 7</h2>
+        <h3>Festival of Economics</h3>
+        <p>This week I attended Quinn and Turners talk on their book: Boom and Bust. One principle at the epicenter of their work is that a bubble requires 3 elements. Firstly, low interest rates - an incentive for exploring more lucrative asset options. Secondly, the amount of credit available to leverage more risky options. Lastly, and the component we will look at, speculative behaviour present in the economy. We would expect greater consumer confidence (CCI) over future expectations in times before a bubble burst.</p>
+        <div class="Chart16" id="Chart16"> </div>
+        <p>The consumer confidence index maintained a position above zero for a decade before the 2008 financial crisis. This supports Turner and Quinns notion that overexuberance is an important factor when prediciting bubbles.  </p>
+        <div class="Chart20" id="Chart20"> </div>
+        <p>Marketability for houses appear to be high in years prior to the 2008 financial crash, indicated by a greater number of home sales.</p>
+    
+    </div>
+    <!--week 9-->
+    <div class="myWeek1">
+        <h2>Homework 8</h2>
+        <h3>regression</h3>
+        <p>This week I tried to prove that producitivity decreases as people work longer. I regressed GDP per hours worked on the number of hours worked in a week. Concluding that there is a -0.52 correllation between the two.</p>
+        <div class="Chart21" id="Chart21"> </div>
+        <p> I also wanted to visualised how productivity differs by country relative to its population size. With more productive country positioned towards the top left of the chart.</p>
+        <div class="Chart22" id="Chart22"> </div>
+</body>
+
+<!--BODY END-->
+
+
+<script>
+    //Define charts:
+    var myChart1 = "chart1_covidUKRegions.json";
+    var myChart2 = "chart2_ukProductivity.json";
+    var myChart3 = "imflending.json";
+    var myChart4 = "Glasswear.json";
+    var myChart5 = "misc.json";
+    var myChart6 = "non durbales.json";
+    var myChart7 = "personal grooming.json";
+    var myChart8 = "tobacco.json";
+    var myChart9 = "water supply2.json";
+    var myChart10 = "culturl services.json";
+    var myChart11 = "beef.json";
+    var myChart12 = "other domestic services.json";
+    var myChart13 = "FPL chart.json";
+    var myChart14 = "Fraud map.json";
+    var myChart15 = "unemployent graph improved.json";
+    var myChart16 = "boom and bust graph.json";
+    var myChart17 = "Clean IMF graph.json"
+    var myChart18 = "usgraph_bland.json"
+    var myChart19 = "Unemployment.json"
+    var myChart20 = "home sales grph.json"
+    var myChart21 = "complete regression.json"
+    var myChart22 = "bubble.json"
+
+    // Embed charts:
+    vegaEmbed('#Chart1', myChart1);
+    vegaEmbed('#Chart2', myChart2);
+    vegaEmbed('#Chart3', myChart3);
+    vegaEmbed('#Chart4', myChart4);
+    vegaEmbed('#Chart5', myChart5);
+    vegaEmbed('#Chart6', myChart6);
+    vegaEmbed('#Chart7', myChart7);
+    vegaEmbed('#Chart8', myChart8);
+    vegaEmbed('#Chart9', myChart9);
+    vegaEmbed('#Chart10', myChart10);
+    vegaEmbed('#Chart11', myChart11);
+    vegaEmbed('#Chart12', myChart12);
+    vegaEmbed('#Chart13', myChart13);
+    vegaEmbed('#Chart14', myChart14);
+    vegaEmbed('#Chart15', myChart15);
+    vegaEmbed('#Chart16', myChart16);
+    vegaEmbed('#Chart17', myChart17);
+    vegaEmbed('#Chart18', myChart18);
+    vegaEmbed('#Chart19', myChart19);
+    vegaEmbed('#Chart20', myChart20);
+    vegaEmbed('#Chart21', myChart21);
+    vegaEmbed('#Chart22', myChart22);
+</script>
+
+</html>
+
+
