@@ -21,13 +21,13 @@
         "y": {
           "field": "CCI base 0 ",
           "type": "quantitative",
-          "title": "",
+          "title": "Consumer confidence index at base 0",
           "axis": {"grid": false, "labelColor": "red", "format": ",.5"}
         },
         "color": {
           "datum": "Confidence index indexed at 0",
           "scale": {"range": ["blue", "red"]},
-          "legend": {"orient": "top-left"}
+          "legend": {"orient": "top-right"}
         }
       }
     },
@@ -37,7 +37,7 @@
         "y": {
           "field": "GDP grow",
           "type": "quantitative",
-          "title": "",
+          "title": "GDP growth (%)",
           "axis": {"grid": false, "labelColor": "blue", "format": "$,.5"}
         },
         "color": {
