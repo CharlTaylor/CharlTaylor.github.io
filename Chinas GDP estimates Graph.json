@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Chinese GDP estimations VS the world banks",
+    "subtitle": "Source: World bank and the chinese national Buearu of statistics",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/China%20VS%20(clean%20and%20finished).csv"
+  },
+  "repeat": {
+    "layer": [
+      "world bank/100",
+      "Chinese Buearu of national statistics",
+      "Macro Trends"
+    ]
+  },
+  "spec": {
+    "height": 300,
+    "width": 240,
+    "mark": {"type": "line", "strokeWidth": 2},
+    "encoding": {
+      "x": {"field": "Year", "type": "temporal"},
+      "y": {
+        "field": {"repeat": "layer"},
+        "type": "quantitative",
+        "title": null
+      },
+      "color": {
+        "datum": {"repeat": "layer"},
+        "scale": {"range": ["black", "blue", ""]}
+      }
+    }
+  },
+  "config": {}
+}

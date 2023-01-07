@@ -1,0 +1,358 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+  "background": "white",
+  "padding": 5,
+  "width": 200,
+  "height": 200,
+  "title": {
+    "text": "Discrepencies in Chinese GDP",
+    "subtitle": "Source: Chinese bureau of statistics; World bank; Statista.",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "style": "cell",
+  "data": [
+    {
+      "name": "hover_store",
+      "values": [
+        {
+          "unit": "layer_0",
+          "fields": [{"type": "E", "field": "Agency"}],
+          "values": ["Chinese Bureau of statistics"]
+        }
+      ]
+    },
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/GDP%20discrepencies%20clean.csv",
+      "format": {"type": "csv", "parse": {"Year": "date"}, "delimiter": ","}
+    },
+    {
+      "name": "data_0",
+      "source": "source_0",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["Agency"],
+          "ops": ["max", "argmax"],
+          "fields": ["Year", "Year"],
+          "as": ["max_Year", "argmax_Year"]
+        },
+        {
+          "type": "filter",
+          "expr": "(isDate(datum[\"max_Year\"]) || (isValid(datum[\"max_Year\"]) && isFinite(+datum[\"max_Year\"]))) && isValid(datum[\"argmax_Year\"][\"GDP growth(annual%)\"]) && isFinite(+datum[\"argmax_Year\"][\"GDP growth(annual%)\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "hover",
+      "update": "vlSelectionResolve(\"hover_store\", \"union\", true, true)"
+    },
+    {
+      "name": "hover_tuple",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mouseover"}],
+          "update": "datum && item().mark.marktype !== 'group' && indexof(item().mark.role, 'legend') < 0 ? {unit: \"layer_0\", fields: hover_tuple_fields, values: [(item().isVoronoi ? datum.datum : datum)[\"Agency\"]]} : null",
+          "force": true
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "null"}
+      ]
+    },
+    {"name": "hover_tuple_fields", "value": [{"type": "E", "field": "Agency"}]},
+    {
+      "name": "hover_toggle",
+      "value": false,
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mouseover"}],
+          "update": "event.shiftKey"
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "false"}
+      ]
+    },
+    {
+      "name": "hover_modify",
+      "on": [
+        {
+          "events": {"signal": "hover_tuple"},
+          "update": "modify(\"hover_store\", hover_toggle ? null : hover_tuple, hover_toggle ? null : true, hover_toggle ? hover_tuple : null)"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "layer_0_pathgroup",
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "faceted_path_layer_0_main",
+          "data": "source_0",
+          "groupby": ["Agency"]
+        }
+      },
+      "encode": {
+        "update": {
+          "width": {"field": {"group": "width"}},
+          "height": {"field": {"group": "height"}}
+        }
+      },
+      "marks": [
+        {
+          "name": "layer_0_marks",
+          "type": "line",
+          "style": ["line"],
+          "sort": {"field": "datum[\"Year\"]"},
+          "interactive": true,
+          "from": {"data": "faceted_path_layer_0_main"},
+          "encode": {
+            "update": {
+              "stroke": {"value": "transparent"},
+              "strokeWidth": {"value": 8},
+              "opacity": [
+                {
+                  "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+                  "value": 1
+                },
+                {"value": 0.2}
+              ],
+              "description": {
+                "signal": "\"Year: \" + (timeFormat(datum[\"Year\"], '%b %d, %Y')) + \"; annual GDP growth(%): \" + (format(datum[\"GDP growth(annual%)\"], \"\")) + \"; Agency: \" + (isValid(datum[\"Agency\"]) ? datum[\"Agency\"] : \"\"+datum[\"Agency\"])"
+              },
+              "x": {"scale": "x", "field": "Year"},
+              "y": {"scale": "y", "field": "GDP growth(annual%)"},
+              "defined": {
+                "signal": "isValid(datum[\"Year\"]) && isFinite(+datum[\"Year\"]) && isValid(datum[\"GDP growth(annual%)\"]) && isFinite(+datum[\"GDP growth(annual%)\"])"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "layer_1_pathgroup",
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "faceted_path_layer_1_main",
+          "data": "source_0",
+          "groupby": ["Agency"]
+        }
+      },
+      "encode": {
+        "update": {
+          "width": {"field": {"group": "width"}},
+          "height": {"field": {"group": "height"}}
+        }
+      },
+      "marks": [
+        {
+          "name": "layer_1_marks",
+          "type": "line",
+          "style": ["line"],
+          "sort": {"field": "datum[\"Year\"]"},
+          "interactive": false,
+          "from": {"data": "faceted_path_layer_1_main"},
+          "encode": {
+            "update": {
+              "stroke": [
+                {
+                  "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+                  "scale": "color",
+                  "field": "Agency"
+                },
+                {"value": "grey"}
+              ],
+              "opacity": [
+                {
+                  "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+                  "value": 1
+                },
+                {"value": 0.2}
+              ],
+              "description": {
+                "signal": "\"Year: \" + (timeFormat(datum[\"Year\"], '%b %d, %Y')) + \"; annual GDP growth(%): \" + (format(datum[\"GDP growth(annual%)\"], \"\")) + \"; Agency: \" + (isValid(datum[\"Agency\"]) ? datum[\"Agency\"] : \"\"+datum[\"Agency\"])"
+              },
+              "x": {"scale": "x", "field": "Year"},
+              "y": {"scale": "y", "field": "GDP growth(annual%)"},
+              "defined": {
+                "signal": "isValid(datum[\"Year\"]) && isFinite(+datum[\"Year\"]) && isValid(datum[\"GDP growth(annual%)\"]) && isFinite(+datum[\"GDP growth(annual%)\"])"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "layer_2_layer_0_marks",
+      "type": "symbol",
+      "style": ["circle"],
+      "interactive": false,
+      "from": {"data": "data_0"},
+      "encode": {
+        "update": {
+          "fill": [
+            {
+              "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+              "scale": "color",
+              "field": "Agency"
+            },
+            {"value": "grey"}
+          ],
+          "opacity": [
+            {
+              "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+              "value": 1
+            },
+            {"value": 0.2}
+          ],
+          "ariaRoleDescription": {"value": "circle"},
+          "description": {
+            "signal": "\"Year: \" + (timeFormat(datum[\"max_Year\"], '%b %d, %Y')) + \"; annual GDP growth(%): \" + (format(datum[\"argmax_Year\"][\"GDP growth(annual%)\"], \"\")) + \"; Agency: \" + (isValid(datum[\"Agency\"]) ? datum[\"Agency\"] : \"\"+datum[\"Agency\"])"
+          },
+          "x": {"scale": "x", "field": "max_Year"},
+          "y": {"scale": "y", "field": "argmax_Year[\"GDP growth(annual%)\"]"},
+          "shape": {"value": "circle"}
+        }
+      }
+    },
+    {
+      "name": "layer_2_layer_1_marks",
+      "type": "text",
+      "style": ["text"],
+      "interactive": false,
+      "from": {"data": "data_0"},
+      "encode": {
+        "update": {
+          "align": {"value": "left"},
+          "dx": {"value": 4},
+          "fill": [
+            {
+              "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+              "scale": "color",
+              "field": "Agency"
+            },
+            {"value": "grey"}
+          ],
+          "opacity": [
+            {
+              "test": "!length(data(\"hover_store\")) || vlSelectionTest(\"hover_store\", datum)",
+              "value": 1
+            },
+            {"value": 0.2}
+          ],
+          "description": {
+            "signal": "\"Year: \" + (timeFormat(datum[\"max_Year\"], '%b %d, %Y')) + \"; annual GDP growth(%): \" + (format(datum[\"argmax_Year\"][\"GDP growth(annual%)\"], \"\")) + \"; Agency: \" + (isValid(datum[\"Agency\"]) ? datum[\"Agency\"] : \"\"+datum[\"Agency\"])"
+          },
+          "x": {"scale": "x", "field": "max_Year"},
+          "y": {"scale": "y", "field": "argmax_Year[\"GDP growth(annual%)\"]"},
+          "text": {
+            "signal": "isValid(datum[\"Agency\"]) ? datum[\"Agency\"] : \"\"+datum[\"Agency\"]"
+          },
+          "baseline": {"value": "middle"}
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "domain": {
+        "fields": [
+          {"data": "source_0", "field": "Year"},
+          {"data": "data_0", "field": "max_Year"}
+        ]
+      },
+      "range": [0, {"signal": "width"}]
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "fields": [
+          {"data": "source_0", "field": "GDP growth(annual%)"},
+          {"data": "data_0", "field": "argmax_Year[\"GDP growth(annual%)\"]"}
+        ]
+      },
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {
+        "fields": [
+          {"data": "source_0", "field": "Agency"},
+          {"data": "data_0", "field": "Agency"}
+        ],
+        "sort": true
+      },
+      "range": "category"
+    }
+  ],
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "gridScale": "y",
+      "grid": true,
+      "tickCount": {"signal": "ceil(width/40)"},
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "gridScale": "x",
+      "grid": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "title": "Year",
+      "labelFlush": true,
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(width/40)"},
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "title": "annual GDP growth(%)",
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "zindex": 0
+    }
+  ],
+  "config": {"style": {"cell": {"stroke": null}}}
+}

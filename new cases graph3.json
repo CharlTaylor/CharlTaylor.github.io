@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Reported number of COVID-19 cases in China ",
+    "subtitle": "Manipulating the number of new cases reported to achieve political goals.",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "width": 300,
+  "height": 300,
+  "layer": [
+    {
+      "data": {
+        "name": "myData",
+        "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/COVID%20stats%20(China%2Bclean%2Bfinale).csv",
+        "format": {"type": "csv", "property": "years"}
+      },
+      "mark": {
+        "type": "line",
+        "color": "#F1C40F",
+        "strokeWidth": 2,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal", "title": null},
+        "y": {"field": "new_cases", "type": "quantitative", "title": null}
+      },
+      "config": {}
+    },
+    {
+      "mark": {"type": "rule", "color": "red", "size": 1, "strokeDash": [8, 8]},
+      "encoding": {"x": {"field": "date", "type": "temporal"}},
+      "data": {
+        "values": [
+          {"events": "Guidlines introduced", "date": "6 Feb 2020 14:15:00"},
+          {"events": "New party leadership", "date": "13 Feb 2020 14:20:59"},
+          {"events": "Guidlines rescinded", "date": "19 Feb 2020 14:20:59"}
+        ],
+        "format": {"parse": {"date": "utc:'%d %b %Y %H:%M:%S'"}}
+      }
+    }
+  ],
+  "mark": {"type": "text", "align": "left", "dx": 5, "dy": -5},
+  "encoding": {"color": {"type": "nominal", "field": "events"}},
+  "config": {}
+}

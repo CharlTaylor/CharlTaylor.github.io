@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Covid-19 case manipulation",
+    "anchor": "start",
+    "color": "darkblue",
+    "subtitle": [
+      "Party decisions affecting covid data coencide with political agendas",
+      "In new cases day by day",
+      "Source: Chinese statistical bureau",
+      ""
+    ]
+  },
+  "width": 300,
+  "height": 300,
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Date",
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "new_cases",
+      "type": "quantitative",
+      "title": "Number of new cases",
+      "axis": {"grid": false}
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "name": "myData",
+        "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/Chinas%20New%20covid%20cases.csv",
+        "format": {"type": "csv"}
+      },
+      "mark": {"type": "line", "color": "blue", "strokeWidth": 2, "opacity": 1}
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "6 Feb 2020 14:15:00",
+            "new_cases": "16000",
+            "event": "introduced"
+          },
+          {
+            "date": "13 Feb 2020 14:20:59",
+            "new_cases": "16000",
+            "event": "New leadership"
+          },
+          {
+            "date": "19 Feb 2020 14:20:59",
+            "new_cases": "16000",
+            "event": "guidlines rescinded"
+          }
+        ],
+        "format": {"parse": {"date": "utc:'%d %b %Y %H:%M:%S'"}}
+      },
+      "mark": {"type": "rule", "size": 2, "strokeDash": [8, 8]},
+      "encoding": {
+        "color": {
+          "field": "event",
+          "type": "ordinal",
+          "scale": {"scheme": "viridis"},
+          "title": null,
+          "legend": {"orient": ""}
+        }
+      }
+    }
+  ],
+  "config": {}
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Multi-series line chart with labels and interactive highlight on hover.  We also set the selection's initial value to provide a better screenshot",
+  "title": {
+    "text": "Discrepencies in Chinese GDP",
+    "subtitle": "Source: Chinese bureau of statistics; World bank; Statista.",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "height": 300,
+  "width": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/GDP%20discrepencies%20clean.csv"
+  },
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal", "title": "Year"},
+    "y": {
+      "field": "GDP growth(annual%)",
+      "type": "quantitative",
+      "title": "annual GDP growth(%)"
+    },
+    "color": {
+      "condition": {
+        "param": "hover",
+        "field": "Agency",
+        "type": "nominal",
+        "legend": null
+      },
+      "value": "grey"
+    },
+    "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.2}
+  },
+  "layer": [
+    {
+      "description": "transparent layer to make it easier to trigger selection",
+      "params": [
+        {
+          "name": "hover",
+          "value": [{"Agency": "Chinese Bureau of statistics"}],
+          "select": {"type": "point", "fields": ["Agency"], "on": "mouseover"}
+        }
+      ],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+    },
+    {"mark": "line"},
+    {
+      "encoding": {
+        "x": {"aggregate": "max", "field": "Year"},
+        "y": {"aggregate": {"argmax": "Year"}, "field": "GDP growth(annual%)"}
+      },
+      "layer": [
+        {"mark": {"type": "circle"}},
+        {
+          "mark": {"type": "text", "align": "left", "dx": 4},
+          "encoding": {"text": {"field": "Agency", "type": "nominal"}}
+        }
+      ]
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

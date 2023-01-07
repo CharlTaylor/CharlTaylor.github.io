@@ -1,0 +1,220 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "An interactive bar chart showing the total number of billionaires from 2008 to 2021.",
+  "background": "white",
+  "padding": 5,
+  "width": 310,
+  "height": 300,
+  "title": {
+    "text": "Number of indicators in the Chinese economic yearbook",
+    "subtitle": "Source: My analysis of the Chinese statistical yearbook",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "style": "cell",
+  "data": [
+    {
+      "name": "highlight_store",
+      "transform": [{"type": "collect", "sort": {"field": "_vgsid_"}}]
+    },
+    {
+      "name": "select_store",
+      "transform": [{"type": "collect", "sort": {"field": "_vgsid_"}}]
+    },
+    {
+      "name": "source_0",
+      "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/number%20of%20indicators.csv",
+      "format": {"type": "csv", "delimiter": ","},
+      "transform": [
+        {"type": "identifier", "as": "_vgsid_"},
+        {
+          "type": "stack",
+          "groupby": ["Year"],
+          "field": "Quantity",
+          "sort": {"field": [], "order": []},
+          "as": ["Quantity_start", "Quantity_end"],
+          "offset": "zero"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"Quantity\"]) && isFinite(+datum[\"Quantity\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "highlight",
+      "update": "vlSelectionResolve(\"highlight_store\", \"union\", true, true)"
+    },
+    {
+      "name": "select",
+      "update": "vlSelectionResolve(\"select_store\", \"union\", true, true)"
+    },
+    {
+      "name": "highlight_tuple",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mouseover"}],
+          "update": "datum && item().mark.marktype !== 'group' && indexof(item().mark.role, 'legend') < 0 ? {unit: \"\", _vgsid_: (item().isVoronoi ? datum.datum : datum)[\"_vgsid_\"]} : null",
+          "force": true
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "null"}
+      ]
+    },
+    {
+      "name": "highlight_toggle",
+      "value": false,
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "mouseover"}],
+          "update": "event.shiftKey"
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "false"}
+      ]
+    },
+    {
+      "name": "highlight_modify",
+      "on": [
+        {
+          "events": {"signal": "highlight_tuple"},
+          "update": "modify(\"highlight_store\", highlight_toggle ? null : highlight_tuple, highlight_toggle ? null : true, highlight_toggle ? highlight_tuple : null)"
+        }
+      ]
+    },
+    {
+      "name": "select_tuple",
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "click"}],
+          "update": "datum && item().mark.marktype !== 'group' && indexof(item().mark.role, 'legend') < 0 ? {unit: \"\", _vgsid_: (item().isVoronoi ? datum.datum : datum)[\"_vgsid_\"]} : null",
+          "force": true
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "null"}
+      ]
+    },
+    {
+      "name": "select_toggle",
+      "value": false,
+      "on": [
+        {
+          "events": [{"source": "scope", "type": "click"}],
+          "update": "event.shiftKey"
+        },
+        {"events": [{"source": "view", "type": "dblclick"}], "update": "false"}
+      ]
+    },
+    {
+      "name": "select_modify",
+      "on": [
+        {
+          "events": {"signal": "select_tuple"},
+          "update": "modify(\"select_store\", select_toggle ? null : select_tuple, select_toggle ? null : true, select_toggle ? select_tuple : null)"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "rect",
+      "style": ["bar"],
+      "interactive": true,
+      "from": {"data": "source_0"},
+      "encode": {
+        "update": {
+          "fill": {"value": "#641b1b"},
+          "stroke": {"value": "red"},
+          "cursor": {"value": "pointer"},
+          "tooltip": {
+            "signal": "{\"Year\": isValid(datum[\"Year\"]) ? datum[\"Year\"] : \"\"+datum[\"Year\"], \"Quantity\": format(datum[\"Quantity\"], \"\")}"
+          },
+          "strokeWidth": [
+            {
+              "test": "length(data(\"select_store\")) && vlSelectionIdTest(\"select_store\", datum)",
+              "value": 2
+            },
+            {
+              "test": "length(data(\"highlight_store\")) && vlSelectionIdTest(\"highlight_store\", datum)",
+              "value": 1
+            },
+            {"value": 0}
+          ],
+          "ariaRoleDescription": {"value": "bar"},
+          "description": {
+            "signal": "\"Year: \" + (isValid(datum[\"Year\"]) ? datum[\"Year\"] : \"\"+datum[\"Year\"]) + \"; Quantity: \" + (format(datum[\"Quantity\"], \"\"))"
+          },
+          "x": {"scale": "x", "field": "Year"},
+          "width": {"signal": "max(0.25, bandwidth('x'))"},
+          "y": {"scale": "y", "field": "Quantity_end"},
+          "y2": {"scale": "y", "field": "Quantity_start"}
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "domain": {"data": "source_0", "field": "Year", "sort": true},
+      "range": [0, {"signal": "width"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.9
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "data": "source_0",
+        "fields": ["Quantity_start", "Quantity_end"]
+      },
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    }
+  ],
+  "axes": [
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": true,
+      "gridScale": "x",
+      "tickCount": {"signal": "ceil(height/40)"},
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "labelAngle": 45,
+      "ticks": false,
+      "labelAlign": "left",
+      "labelBaseline": "top",
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "zindex": 0
+    }
+  ],
+  "config": {}
+}
