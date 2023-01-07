@@ -32,7 +32,7 @@
       "y": {
         "field": {"repeat": "layer"},
         "type": "quantitative",
-        "title": null
+        "title": "Unemployment (%)"
       },
       "color": {
         "datum": {"repeat": "layer"},
