@@ -5,15 +5,15 @@
     "format": {"type": "json", "property": "years"}
   },
   "title": {
-    "text": "CPI index: Cultural services",
-    "subtitle": "consumer price index of cultural services between 1990 - present",
+    "text": "Cultural services",
+    "subtitle": "consumer price index of cultural services",
     "subtitleFontStyle": "italic",
     "subtitleFontSize": 10,
     "anchor": "start",
     "color": "black"
   },
-  "width": 300,
-  "height": 300,
+  "width": 150,
+  "height": 150,
   "mark": {"type": "line", "color": "seagreen", "strokeWidth": 2, "opacity": 1},
   "encoding": {
     "x": {"field": "date", "type": "temporal", "title": null},

@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/data_ONS-L53S.json",
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/data_ONS-L5KS.json",
     "format": {"type": "json", "property": "years"}
   },
   "title": {
-    "text": "Non-durable household goods",
-    "subtitle": "consumer price index of Non-durable household goods",
+    "text": "Miscellaneous & other services",
+    "subtitle": "consumer price index of Miscellaneous services",
     "subtitleFontStyle": "italic",
     "subtitleFontSize": 10,
     "anchor": "start",
