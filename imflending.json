@@ -1,0 +1,36 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+      "text": " credit outstanding to all IF members",
+      "subtitle":". Source: European Parliament",
+      "subtitleFontStyle":"italic",
+      "subtitleFontSize":10,
+      "anchor": "start",
+      "color": "black"},
+  
+  "data":{"url": "IMF_credit_outstanding_clean.csv"},
+  
+  "height": 300,
+  "width": 300,
+
+  "mark": {
+    "type": "bar",
+    "color": "#86d0bb"},
+
+"encoding": {
+     "x": {
+       "field": "date",
+       "type": "temporal",
+       "axis": {
+         "title": null,
+         "grid": false,
+         "ticks": false,
+         "labelAngle": 45}},
+
+      "y": {
+        "field": "totals (billions)",
+        "type": "quantitative",
+        "title": "Outstanding debt (billions)",
+        "axis": {"grid": false}}
+}
+}

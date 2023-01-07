@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "SAS litter",
+  "title": {
+    "text": "Diminishing returns to productivity",
+    "subtitle": "Plotting GDP per hour worked against the number of hours worked in a week for OECD countries between 1990-2020.",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/Chartclean1.csv"
+  },
+  "height": 300,
+  "width": 750,
+  "layer": [
+    {
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "x": {
+          "field": "Hours worked/week",
+          "type": "quantitative",
+          "scale": {"domain": [1300, 2500]}
+        },
+        "y": {"field": "GDP/hourworked", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "line", "color": "firebrick"},
+      "transform": [
+        {"regression": "GDP/hourworked", "on": "Hours worked/week"}
+      ],
+      "encoding": {
+        "x": {"field": "Hours worked/week", "type": "quantitative"},
+        "y": {"field": "GDP/hourworked", "type": "quantitative"}
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "GDP/hourworked",
+          "on": "Hours worked/week",
+          "params": true
+        },
+        {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+      ],
+      "mark": {
+        "type": "text",
+        "color": "firebrick",
+        "x": "width",
+        "align": "right",
+        "y": -5
+      },
+      "encoding": {"text": {"type": "nominal", "field": "R2"}}
+    }
+  ],
+  "config": {}
+}

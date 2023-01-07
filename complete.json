@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Various US measures state by state",
+  "title": {
+    "text": "Productivity per hour worked",
+    "subtitle": [
+      "Comparing countries between 1990 and 2020 on GDP per hour worked and the number of hours worked.",
+      "Source: OECD"
+    ],
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/finished.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {
+    "type": "circle",
+    "size": 75,
+    "color": "rgb(0,67,167)",
+    "opacity": 0.6
+  },
+  "height": 300,
+  "width": 800,
+  "encoding": {
+    "x": {
+      "field": "Hours worked/week",
+      "type": "quantitative",
+      "scale": {"domain": [1300, 2300]},
+      "title": null
+    },
+    "y": {
+      "field": "GDP/hourworked",
+      "type": "quantitative",
+      "scale": {"domain": [0, 90]},
+      "title": null
+    }
+  },
+  "config": {}
+}
