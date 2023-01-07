@@ -25,7 +25,7 @@
     "y": {
       "field": "Value",
       "type": "quantitative",
-      "title": null,
+      "title": "Unemployment (%)",
       "axis": {"grid": false}
     },
     "color": {
