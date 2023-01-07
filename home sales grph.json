@@ -40,9 +40,9 @@
       "mark": {"stroke": "#36b7b4", "type": "line", "interpolate": "monotone"},
       "encoding": {
         "y": {
-          "field": "GDP groweth (%)",
+          "field": "GDP grow",
           "type": "quantitative",
-          "title": "Growth in GDP",
+          "title": "Growth in GDP (%)",
           "axis": {"titleColor": "#36b7b4"}
         }
       }
