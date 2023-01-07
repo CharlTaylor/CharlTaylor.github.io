@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 300,
+  "view": {"stroke": ""},
+  "title": {
+    "text": "Monetary losses from fraud by state in 2020",
+    "fontSize": 12,
+    "subtitle": [
+      "Financial losses in fraud complaints lodged with the Federal Trade Commission in the United States in 2020",
+      ""
+    ],
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "middle"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/RDeconomist/RDeconomist.github.io/main/charts/maps/geoUSStates.json",
+    "format": {"property": "features"}
+  },
+  "projection": {"type": "albersUsa"},
+  "mark": {
+    "type": "geoshape",
+    "fill": "lightgrey",
+    "stroke": "darkegrey",
+    "strokeWidth": 0.5
+  },
+  "encoding": {"tooltip": {"field": "properties.NAME", "type": "nominal"}},
+  "config": {}
+}

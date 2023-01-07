@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Various US measures state by state",
+  "title": {
+    "text": "Value of players relative to their cost",
+    "subtitle": [
+      "comparing the top 100 points scores to their relative prices in the 21/22 FPL",
+      ""
+    ],
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/fpl_2122.csv"
+  },
+  "mark": {"type": "point", "tooltip": {"content": "data"}},
+  "encoding": {
+    "x": {"field": "Cost", "type": "quantitative"},
+    "y": {"field": "Points", "type": "quantitative"}
+  },
+  "config": {}
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Comparing Five economies",
+    "subtitle": [
+      "Unemployment rates between 2005 - present. Source: World bank.",
+      ""
+    ],
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/Unemployment%20clean%203.csv"
+  },
+  "XYZrepeat": {"layer": ["China", "United States", "UK", "Japan", "Germany"]},
+  "repeat": {
+    "layer": ["China", "United States", "United Kingdom", "Japan", "Germany"]
+  },
+  "height": 300,
+  "width": 300,
+  "spec": {
+    "mark": {"type": "line", "strokeWidth": 2},
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "temporal",
+        "title": null,
+        "axis": {"grid": false}
+      },
+      "y": {
+        "field": {"repeat": "layer"},
+        "type": "quantitative",
+        "title": null
+      },
+      "color": {
+        "datum": {"repeat": "layer"},
+        "scale": {"range": ["black", "green", "orange", "pink", "red"]},
+        "legend": {"orient": "top-left", "fillColor": "white"}
+      }
+    }
+  },
+  "config": {}
+}

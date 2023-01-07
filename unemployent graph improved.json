@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Unemployment in advanced economies",
+    "subtitle": "unemployment as a percentage of the working age population between 1955 and 2020 ",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/UNEMPLOYMENT%20CLEAN%20(2).csv",
+    "format": {"type": "csv"}
+  },
+  "height": 300,
+  "width": 300,
+  "mark": {"type": "line", "point": false},
+  "encoding": {
+    "x": {
+      "field": "TIME",
+      "type": "temporal",
+      "title": null,
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": null,
+      "axis": {"grid": false}
+    },
+    "color": {
+      "field": "LOCATION",
+      "type": "nominal",
+      "scale": {"scheme": "set1"},
+      "title": null,
+      "legend": {"orient": "top-left"}
+    }
+  },
+  "config": {}
+}

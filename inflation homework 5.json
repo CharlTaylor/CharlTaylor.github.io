@@ -1,0 +1,109 @@
+{
+    "home": "com.github.davidcarboni.restolino.routes.DefaultApiDocumentation",
+    "serverError": "com.github.onsdigital.zebedee.reader.api.filter.ErrorHandler",
+    "notFound": "com.github.davidcarboni.restolino.routes.DefaultNotFound",
+    "api": {
+    "data": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Data",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "read"
+    }
+    }
+    },
+    "reindex": {
+    "endpointClass": "com.github.onsdigital.zebedee.search.api.endpoint.ReIndex",
+    "requestHandlers": {
+    "DELETE": {
+    "handlerMethod": "deleteIndex",
+    "responseMessageType": "Object"
+    },
+    "POST": {
+    "handlerMethod": "reIndex",
+    "responseMessageType": "Object"
+    }
+    }
+    },
+    "resource": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Resource",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "read"
+    }
+    }
+    },
+    "publishedindex": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.PublishedIndex",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "read",
+    "responseMessageType": "com.github.onsdigital.zebedee.reader.api.bean.PublishedIndexResponse"
+    }
+    }
+    },
+    "resolvedatasets": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.ResolveDatasets",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "handle"
+    }
+    }
+    },
+    "generator": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Generator",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "get"
+    }
+    }
+    },
+    "health": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Health",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "getHealth"
+    }
+    }
+    },
+    "taxonomy": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Taxonomy",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "get"
+    }
+    }
+    },
+    "filesize": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.FileSize",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "get"
+    }
+    }
+    },
+    "publisheddata": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.PublishedData",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "read"
+    }
+    }
+    },
+    "export": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Export",
+    "requestHandlers": {
+    "POST": {
+    "handlerMethod": "post"
+    }
+    }
+    },
+    "parents": {
+    "endpointClass": "com.github.onsdigital.zebedee.reader.api.endpoint.Parents",
+    "requestHandlers": {
+    "GET": {
+    "handlerMethod": "get"
+    }
+    }
+    }
+    }
+    }

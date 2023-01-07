@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Sugar 4b",
+  "width": 260,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/House%20marketability.csv"
+  },
+  "title": {
+    "text": "Comparing home sales to changes in GDP",
+    "subtitle": "Evidence to support Turner and Quinns bubble triangle. Source: Statista",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "sort": ["0"],
+      "title": "Year",
+      "axis": {"labelAngle": 60, "labelFontSize": 6}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"opacity": 0.5, "type": "bar", "color": "#e6224b"},
+      "encoding": {
+        "y": {
+          "field": "home sales (millions)",
+          "type": "quantitative",
+          "scale": {"domain": [0, 10]},
+          "title": "US home sales (millions) ",
+          "axis": {"titleColor": "#e6224b"}
+        }
+      }
+    },
+    {
+      "mark": {"stroke": "#36b7b4", "type": "line", "interpolate": "monotone"},
+      "encoding": {
+        "y": {
+          "field": "GDP grow",
+          "type": "quantitative",
+          "title": "Growth in GDP",
+          "axis": {"titleColor": "#36b7b4"}
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}},
+  "config": {}
+}
