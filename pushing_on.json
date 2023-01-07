@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "An interactive bar chart showing the total number of billionaires from 2008 to 2021.",
+  "title": {
+    "text": "Number of indicators in the Chinese economic yearbook",
+    "subtitle": "Source: My analysis of the Chinese statistical yearbook",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/number%20of%20indicators.csv",
+    "format": {"type": "csv"}
+  },
+  "height": 300,
+  "width": 310,
+  "params": [
+    {"name": "highlight", "select": {"type": "point", "on": "mouseover"}},
+    {"name": "select", "select": "point"}
+  ],
+  "mark": {
+    "type": "bar",
+    "color": "rgba(0,67,167, 1)",
+    "stroke": "red",
+    "cursor": "pointer"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "nominal",
+      "title": "Year",
+      "axis": {"grid": false, "ticks": false, "labelAngle": 45}
+    },
+    "y": {
+      "field": "Quantity",
+      "type": "quantitative",
+      "title": "Number of Indicators available",
+      "axis": {"grid": true}
+    },
+    "fillOpacity": {
+      "condition": {"param": "highlight", "value": 1},
+      "value": 0.3
+    },
+    "strokeWidth": {
+      "condition": [
+        {"param": "select", "empty": false, "value": 2},
+        {"param": "highlight", "empty": false, "value": 1}
+      ],
+      "value": 0
+    }
+  },
+  "config": {"scale": {"bandPaddingInner": 0.2}}
+}
