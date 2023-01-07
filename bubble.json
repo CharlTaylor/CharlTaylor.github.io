@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "productivity relative to the population size",
+    "subtitle": [
+      "Source: IMF",
+      "Size of points based on employed popluation.",
+      ""
+    ],
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+  "config": {"background": "white", "view": {"stroke": "transparent"}},
+  "data": {
+    "url": "https://raw.githubusercontent.com/CharlTaylor/CharlTaylor.github.io/main/country%20productivity%20clean.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {"type": "circle", "color": "green", "opacity": 0.7},
+  "height": 300,
+  "width": 300,
+  "encoding": {
+    "x": {
+      "field": "Average work week (hrs)",
+      "type": "quantitative",
+      "title": "Average work wee hours",
+      "scale": {"domain": [25, 45]},
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "GDP per hour worked",
+      "type": "quantitative",
+      "scale": {"domain": [10, 100]},
+      "axis": {"grid": false},
+      "title": "GDP per hour worked"
+    },
+    "size": {
+      "field": "Employed Population",
+      "type": "quantitative",
+      "title": "Employed pop",
+      "scale": {"range": [10, 800]},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Country", "type": "ordinal", "title": "Country"},
+      {
+        "field": "GDP per hour worked",
+        "type": "GDP per hour worked",
+        "title": "Rank",
+        "format": ".0f"
+      },
+      {
+        "field": "Average work week (hrs)",
+        "type": "quantitative",
+        "title": "Average work week (hrs)",
+        "format": ".2f"
+      },
+      {
+        "field": "Employed Population",
+        "type": "quantitative",
+        "title": "Population",
+        "format": ","
+      }
+    ]
+  }
+}
