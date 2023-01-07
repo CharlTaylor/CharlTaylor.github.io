@@ -21,9 +21,10 @@
         "x": {
           "field": "Hours worked/week",
           "type": "quantitative",
-          "scale": {"domain": [1300, 2500]}
+          "scale": {"domain": [1300, 2500],
+                   "title": "Hours worked per week (hrs)"}
         },
-        "y": {"field": "GDP/hourworked", "type": "quantitative"}
+        "y": {"field": "GDP/hourworked", "type": "quantitative", "title": "GDP per hour worked ($)"}
       }
     },
     {
