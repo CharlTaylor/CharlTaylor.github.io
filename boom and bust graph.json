@@ -43,7 +43,7 @@
         "color": {
           "datum": "Growth in GDP",
           "scale": {"range": ["orange", "hotpink"]},
-          "legend": {"orient": "top-left"}
+          "legend": ""
         }
       }
     }
