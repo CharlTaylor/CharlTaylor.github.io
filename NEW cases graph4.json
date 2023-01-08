@@ -42,7 +42,7 @@
           {
             "date": "6 Feb 2020 14:15:00",
             "new_cases": "16000",
-            "event": "introduced"
+            "event": "Guidlines introduced"
           },
           {
             "date": "13 Feb 2020 14:20:59",
@@ -52,7 +52,7 @@
           {
             "date": "19 Feb 2020 14:20:59",
             "new_cases": "16000",
-            "event": "guidlines rescinded"
+            "event": "Guidlines rescinded"
           }
         ],
         "format": {"parse": {"date": "utc:'%d %b %Y %H:%M:%S'"}}
@@ -63,7 +63,7 @@
           "field": "event",
           "type": "ordinal",
           "scale": {"scheme": "viridis"},
-          "title": null,
+          "title": "Events",
           "legend": {"orient": ""}
         }
       }
