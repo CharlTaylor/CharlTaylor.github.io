@@ -62,7 +62,7 @@
         "color": {
           "field": "event",
           "type": "ordinal",
-          "scale": {"scheme": "viridis"},
+          "scale": {"scheme": "accent"},
           "title": "Events",
           "legend": {"orient": ""}
         }
