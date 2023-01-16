@@ -24,7 +24,7 @@
     "x": {
       "field": "Average work week (hrs)",
       "type": "quantitative",
-      "title": "Average work wee hours",
+      "title": "Average work week (hrs)",
       "scale": {"domain": [25, 45]},
       "axis": {"grid": false}
     },
@@ -33,12 +33,12 @@
       "type": "quantitative",
       "scale": {"domain": [10, 100]},
       "axis": {"grid": false},
-      "title": "GDP per hour worked"
+      "title": "GDP per hour worked ($)"
     },
     "size": {
       "field": "Employed Population",
       "type": "quantitative",
-      "title": "Employed pop",
+      "title": "Employed population",
       "scale": {"range": [10, 800]},
       "legend": null
     },
@@ -46,8 +46,8 @@
       {"field": "Country", "type": "ordinal", "title": "Country"},
       {
         "field": "GDP per hour worked",
-        "type": "GDP per hour worked",
-        "title": "Rank",
+        "type": "quantitative",
+        "title": "GDP per hour worked ($)",
         "format": ".0f"
       },
       {
