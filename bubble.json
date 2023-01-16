@@ -29,7 +29,7 @@
       "axis": {"grid": false}
     },
     "y": {
-      "field": "GDP per hour worked ($)",
+      "field": "GDP per hour worked",
       "type": "quantitative",
       "scale": {"domain": [10, 100]},
       "axis": {"grid": false},
@@ -47,7 +47,7 @@
       {
         "field": "GDP per hour worked",
         "type": "GDP per hour worked",
-        "title": "GDP per hour worked ($)",
+        "title": "Rank",
         "format": ".0f"
       },
       {
